@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -9,11 +10,13 @@ public class LoginPage extends BasePage {
         super(driver);
     }
 
+    @Step("Open login page")
     public LoginPage open() {
         driver.get("https://tms9.my.salesforce.com/");
         return this;
     }
 
+    @Step("Login on site using '{user}' and '{pass}'")
     public HomePage login(String user, String pass) {
         driver.findElement(By.id("username")).sendKeys(user);
         driver.findElement(By.id("password")).sendKeys(pass);

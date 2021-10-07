@@ -3,12 +3,13 @@ package tests;
 import models.Account;
 import models.AccountFactory;
 import org.testng.annotations.Test;
+import utils.AllureUtils;
 
 import static org.testng.Assert.assertTrue;
 
 public class AccountTest extends BaseTest {
 
-    @Test
+    @Test(description = "Test to create a new account")
     public void createNewAccount() {
         boolean isOpened = loginPage
                 .open()
@@ -21,9 +22,8 @@ public class AccountTest extends BaseTest {
                 .open()
                 .isPageOpened()
                 .clickNew()
-                .createAccount(account);
-        accountPage.clickSave();
-
+                .createAccount(account)
+                .clickSave();
 
     }
 }

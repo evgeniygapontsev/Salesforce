@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
@@ -11,6 +12,7 @@ public class HomePage extends BasePage {
         super(driver);
     }
 
+    @Step("Open home page")
     @Override
     public HomePage open() {
         driver.get(baseUrl + "lightning/page/home");
