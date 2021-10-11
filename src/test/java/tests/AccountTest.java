@@ -1,45 +1,29 @@
 package tests;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import models.Account;
+import models.AccountFactory;
 import org.testng.annotations.Test;
-import pages.AccountPage;
+import utils.AllureUtils;
 
-import java.util.concurrent.TimeUnit;
+import static org.testng.Assert.assertTrue;
 
-public class AccountTest {
+public class AccountTest extends BaseTest {
 
-    //TODO BaseTest
-    //BeforeMethod
-    //AfterMethod
-    @Test
-    public void createAccount() {
-        WebDriverManager.chromedriver().setup();
-        WebDriver driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        driver.get("https://login.salesforce.com/");
-        driver.findElement(By.id("username")).sendKeys("dmitryrak11-sraq@force.com");
-        driver.findElement(By.id("password")).sendKeys("password01");
-        driver.findElement(By.id("Login")).click();
-        WebDriverWait wait = new WebDriverWait(driver, 10);
-        //wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[title=Home]")));
-        driver.get("https://tms5.lightning.force.com/lightning/o/Account/list?filterName=Recent");
+    @Test(description = "Test to create a new account")
+    public void createNewAccount() {
+        boolean isOpened = loginPage
+                .open()
+                .login("gapontsev91-y4c8@force.com", "password9")
+                .isOpened();
+        assertTrue(isOpened, "Home page wasn't opened");
 
-        driver.findElement(By.cssSelector("[title=New]")).click();
+        Account account = AccountFactory.get();
+        accountPage
+                .open()
+                .isPageOpened()
+                .clickNew()
+                .createAccount(account)
+                .clickSave();
 
-        new AccountPage(driver).createAccount("Dmitry Rak", "+375213123");
-
-        driver.findElement(By.xpath("//span[contains(text(), 'Save')]")).click();
-        driver.quit();
-        //КЛИК NEW
-        //ЗАПОЛИНТЬ ACCOUNT NAME
-
-        //username
-        //password
-        //Login
     }
 }

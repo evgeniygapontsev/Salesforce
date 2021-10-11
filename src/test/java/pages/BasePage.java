@@ -1,10 +1,22 @@
 package pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import wrappers.Input;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class BasePage {
+public abstract class BasePage {
 
+    WebDriver driver;
+    WebDriverWait wait;
+    String baseUrl = "https://tms9.lightning.force.com/";
 
+    public BasePage(WebDriver driver) {
+        this.driver = driver;
+        wait = new WebDriverWait(driver, 10);
+    }
+
+    public abstract BasePage open();
+
+    public void openMenu(String menu) {
+
+    }
 }
