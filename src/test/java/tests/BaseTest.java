@@ -10,6 +10,7 @@ import org.testng.annotations.Listeners;
 import org.testng.annotations.Optional;
 import pages.AccountPage;
 import pages.LoginPage;
+import utils.PropertyReader;
 
 import java.util.concurrent.TimeUnit;
 
@@ -29,6 +30,10 @@ public class BaseTest {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         loginPage = new LoginPage(driver);
         accountPage = new AccountPage(driver);
+
+        System.getenv().getOrDefault("SALESFORCE_URL", PropertyReader.getProperty("salesforce.url"));
+        System.getenv().getOrDefault("SALESFORCE_USER", PropertyReader.getProperty("salesforce.user"));
+        System.getenv().getOrDefault("SALESFORCE_PASS", PropertyReader.getProperty("salesforce.pass"));
     }
 
 //    @AfterMethod(alwaysRun = true)
