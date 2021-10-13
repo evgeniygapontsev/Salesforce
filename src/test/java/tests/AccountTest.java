@@ -3,7 +3,7 @@ package tests;
 import models.Account;
 import models.AccountFactory;
 import org.testng.annotations.Test;
-import utils.AllureUtils;
+import utils.PropertyReader;
 
 import static org.testng.Assert.assertTrue;
 
@@ -13,7 +13,7 @@ public class AccountTest extends BaseTest {
     public void createNewAccount() {
         boolean isOpened = loginPage
                 .open()
-                .login("gapontsev91-y4c8@force.com", "password9")
+                .login(PropertyReader.getProperty("salesforce.user"), PropertyReader.getProperty("salesforce.pass"))
                 .isOpened();
         assertTrue(isOpened, "Home page wasn't opened");
 

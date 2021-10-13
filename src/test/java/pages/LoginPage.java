@@ -12,7 +12,7 @@ public class LoginPage extends BasePage {
 
     @Step("Open login page")
     public LoginPage open() {
-        driver.get("https://tms9.my.salesforce.com/");
+        driver.get("https://login.salesforce.com/");
         return this;
     }
 
