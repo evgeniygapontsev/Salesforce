@@ -8,7 +8,7 @@ public abstract class BasePage {
 
     WebDriver driver;
     WebDriverWait wait;
-    String baseUrl = PropertyReader.getProperty("salesforce.url");
+    String baseUrl = System.getenv().getOrDefault("SALESFORCE_URL", PropertyReader.getProperty("salesforce.url"));
 
     public BasePage(WebDriver driver) {
         this.driver = driver;

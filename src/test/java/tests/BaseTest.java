@@ -20,6 +20,9 @@ public class BaseTest {
     WebDriver driver;
     LoginPage loginPage;
     AccountPage accountPage;
+    String url;
+    String user;
+    String pass;
 
     @BeforeMethod
     public void setUp(@Optional ITestContext context) {
@@ -31,9 +34,8 @@ public class BaseTest {
         loginPage = new LoginPage(driver);
         accountPage = new AccountPage(driver);
 
-        System.getenv().getOrDefault("SALESFORCE_URL", PropertyReader.getProperty("salesforce.url"));
-        System.getenv().getOrDefault("SALESFORCE_USER", PropertyReader.getProperty("salesforce.user"));
-        System.getenv().getOrDefault("SALESFORCE_PASS", PropertyReader.getProperty("salesforce.pass"));
+        user = System.getenv().getOrDefault("SALESFORCE_USER", PropertyReader.getProperty("salesforce.user"));
+        pass = System.getenv().getOrDefault("SALESFORCE_PASS", PropertyReader.getProperty("salesforce.pass"));
     }
 
 //    @AfterMethod(alwaysRun = true)

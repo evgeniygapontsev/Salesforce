@@ -13,7 +13,7 @@ public class AccountTest extends BaseTest {
     public void createNewAccount() {
         boolean isOpened = loginPage
                 .open()
-                .login(PropertyReader.getProperty("salesforce.user"), PropertyReader.getProperty("salesforce.pass"))
+                .login(user, pass)
                 .isOpened();
         assertTrue(isOpened, "Home page wasn't opened");
 
