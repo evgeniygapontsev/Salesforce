@@ -7,13 +7,15 @@ pipeline {
     }
    parameters {
        booleanParam(name: 'HEADLESS', defaultValue: true, description: 'Headless browser')
+       gitParameter branchFilter: 'origin/(.*)', defaultValue: 'SFWithPatt', name: 'BRANCH', type: 'PT_BRANCH'
+
    }
 
     stages {
         stage('Build') {
             steps {
                 // Get some code from a GitHub repository
-                git 'https://github.com/evgeniygapontsev/Salesforce.git'
+                git branch: "${params.BRANCH}", url: 'https://github.com/evgeniygapontsev/Salesforce.git'
 
                 // Run Maven on a Unix agent.
                 //sh "mvn -Dmaven.test.failure.ignore=true clean package"
