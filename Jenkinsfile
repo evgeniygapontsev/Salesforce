@@ -7,7 +7,7 @@ pipeline {
     }
    parameters {
        booleanParam(name: 'HEADLESS', defaultValue: true, description: 'Headless browser')
-       gitParameter branchFilter: 'origin/(.*)', defaultValue: 'SFWithPatt', name: 'BRANCH', type: 'PT_BRANCH'
+       gitParameter branchFilter: 'origin/(.*)', defaultValue: 'master', name: 'BRANCH', type: 'PT_BRANCH'
 
    }
 
