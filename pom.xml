@@ -14,7 +14,7 @@
         <selenium.version>3.141.59</selenium.version>
         <webdrivermanager.version>4.4.3</webdrivermanager.version>
         <testNG.version>7.4.0</testNG.version>
-        <suiteXmlFile>src/test/resources/file.xml</suiteXmlFile>
+
     </properties>
 
     <dependencies>
@@ -84,9 +84,6 @@
                         -javaagent:${settings.localRepository}/org/aspectj/aspectjweaver/1.9.6/aspectjweaver-1.9.6.jar
                         -Xmx256m
                     </argLine>
-                    <suiteXmlFiles>
-                        <suiteXmlFile>${suiteXmlFile}</suiteXmlFile>
-                    </suiteXmlFiles>
                 </configuration>
             </plugin>
             <plugin>

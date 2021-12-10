@@ -11,6 +11,6 @@ public class AccountFactory {
         return new Account(faker.name().fullName(),
                 faker.internet().domainName(),
                 faker.phoneNumber().phoneNumber(),
-                "24", "Analyst", "Healthcare");
+                "24", "Analyst", "Apparel");
     }
 }
